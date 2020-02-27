@@ -100,10 +100,10 @@ public class Vertex implements Comparable<Vertex>
            line segment 1 connects vertices u1 and u2 (but does not include them) and
            line segment 2 connects vertices v1 and v2 (but does not include them) */
 
-        System.err.println(u1.getX() + " " + u1.getY());
-        System.err.println(u2.getX() + " " + u2.getY());
-        System.err.println(v1.getX() + " " + v1.getY());
-        System.err.println(v2.getX() + " " + v2.getY());
+//        System.err.println(u1.getX() + " " + u1.getY());
+//        System.err.println(u2.getX() + " " + u2.getY());
+//        System.err.println(v1.getX() + " " + v1.getY());
+//        System.err.println(v2.getX() + " " + v2.getY());
 	int a = u1.getX() - u2.getX();
         int b = v2.getX() - v1.getX();
         int c = v2.getX() - u2.getX(); 		

@@ -19,28 +19,43 @@ public class Figures {
 
         for (String line : input) {
             Figure figure = new Figure();
-            //txtParser.getInstance().transformToVertex(line, figure);
             figure.transformToVertex(line, figure);
             figuresList.add(figure);
-//            Figure figure = new Figure();
-//            String[] verticies = line.split("\\)");
-//            // check to make sure you have valid data
-//            for (int i = 0; i < verticies.length; i++) {
-//                verticies[i] = verticies[i].replaceAll("[()]", "");
-//                verticies[i] = verticies[i].replaceAll(",", "");
-//
-//                String[] vertex = verticies[i].split(" ");
-//                if (vertex != null && vertex.length != 2) {
-//                    continue;
-//                }
-//                figure.addVertex(Integer.valueOf(vertex[0]), Integer.valueOf(vertex[1]));
-//            }
-//            figuresList.add(figure);
         }
     }
 
     public List<Figure> getFiguresList() {
         return figuresList;
+    }
+    
+    /**
+     * This method checks if the line the state and potentialNeighbour vertex make in the graph doesn't intersect a Rhombus
+     * @param state
+     * @param potentialNeighbour
+     * @return true of false
+     */
+    private boolean doesLineIntersectRhombus(Vertex state, Vertex potentialNeighbour) {
+        for (Figure rhombus : figuresList) {
+
+            int i = 1;
+
+            //Going through all the verticies in the rhombus to see which one the state could potentially connect to
+            //check each side of the rhombus to make sure the state isn't going through
+            for (Vertex rhombusVertex : rhombus.verticies) {
+
+                boolean linesIntersect = rhombusVertex.linesIntersect(state, potentialNeighbour, rhombusVertex, rhombus.verticies.get(i));
+               // System.err.println(linesIntersect);
+                if (linesIntersect == true) {
+                    System.err.println("Line intersects - Do not add neighbour");
+                    return true;
+                }
+                i++;
+                if (i >= (rhombus.verticies.size() - 1)) {
+                    i = 0;
+                }
+            }
+        }
+        return false;
     }
 
 }

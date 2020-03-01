@@ -3,11 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Puzzles {
-    private int currentPuzzle;
-    private List<Puzzle> puzzleList;
+    public List<Puzzle> puzzleList;
 
     public Puzzles() {
-        currentPuzzle = 0;
         puzzleList = new ArrayList<>();
         List<String> input = txtParser.getInstance().readTxtFile("puzzle.txt");
 
@@ -19,24 +17,17 @@ class Puzzles {
         }
         
 //        for (Puzzle puzzle : puzzleList) {
-//            System.err.println(puzzle.getStart().getX() + " " + puzzle.getStart().getY());
+//            System.err.println("PUZZLES\n"+ puzzle.getStart().getX() + " " + puzzle.getStart().getY());
 //        }
     }
     
-    public int getCurrentPuzzle() {
-        return currentPuzzle;
+    public Vertex getCurrentPuzzleStart(int index) {
+        return puzzleList.get(index).getStart();
     }
     
-    public Vertex getCurrentPuzzleStart() {
-        return puzzleList.get(currentPuzzle).getStart();
+    public Vertex getCurrentPuzzleFinish(int index) {
+        return puzzleList.get(index).getFinish();
     }
-    
-    public Vertex getCurrentPuzzleFinish() {
-        return puzzleList.get(currentPuzzle).getFinish();
-    }
-    
-    public void setCurrentPuzzle(int currentPuzzle) {
-        this.currentPuzzle = currentPuzzle;
-    }
+  
     
 }

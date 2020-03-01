@@ -23,12 +23,10 @@ public class Vertex implements Comparable<Vertex>
 
     public int compareTo(Vertex v)
     {
-        if (v.getX() == getX())
-	{
+        //System.err.println(v.getX() + " " + v.getY() + " " +  getX() + " " + getY());
+        if (v.getX() == getX()) {
 	    return v.getY() - getY();
-	}
-	else
-	{
+	} else {
 	    return v.getX() - getX();
 	}
     }
@@ -51,9 +49,6 @@ public class Vertex implements Comparable<Vertex>
 	/* check whether the vertex u falls within a given line segment where
            the line segment connects vertices v1 and v2 (but does not include them) */
 
-        System.err.println(u.getX() + " " + u.getY());
-        System.err.println(v1.getX() + " " + v1.getY());
-        System.err.println(v2.getX() + " " + v2.getY());
         
         int a = v1.getX() - v2.getX();
         int b = u.getX() - v2.getX();
@@ -61,7 +56,6 @@ public class Vertex implements Comparable<Vertex>
         int c = v1.getY() - v2.getY();
         int d = u.getY() - v2.getY();
         
-        System.err.println(a + " " + b + " " + c + " " + d);
 
 	/* check whether the simultaneous equations a mu = b and c mu = d
            has a solution 0 < mu < 1 
